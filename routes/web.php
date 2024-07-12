@@ -21,4 +21,10 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return Inertia::render('Dashboard');
     })->name('dashboard');
+    Route::get('/toast', function () {
+        return Inertia::render('Toast');
+    })->name('toast');
+    Route::get('/modal', function () {
+        return Inertia::render('Modal');
+    })->name('modal');
 });
