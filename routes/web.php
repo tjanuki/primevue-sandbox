@@ -27,4 +27,7 @@ Route::middleware([
     Route::get('/modal', function () {
         return Inertia::render('Modal');
     })->name('modal');
+    Route::get('/form', function () {
+        return Inertia::render('Form');
+    })->name('form');
 });

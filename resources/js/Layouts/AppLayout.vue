@@ -8,6 +8,7 @@ import DropdownLink from '@/Components/DropdownLink.vue';
 import NavLink from '@/Components/NavLink.vue';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
 import Toast from "primevue/toast";
+import Navigations from "@/Layouts/partials/Navigations.vue";
 
 defineProps({
     title: String,
@@ -49,17 +50,7 @@ const logout = () => {
                             </div>
 
                             <!-- Navigation Links -->
-                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                                <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
-                                    Dashboard
-                                </NavLink>
-                                <NavLink :href="route('toast')" :active="route().current('toast')">
-                                    Toast
-                                </NavLink>
-                                <NavLink :href="route('modal')" :active="route().current('modal')">
-                                    Modal
-                                </NavLink>
-                            </div>
+                            <Navigations/>
                         </div>
 
                         <div class="hidden sm:flex sm:items-center sm:ms-6">
