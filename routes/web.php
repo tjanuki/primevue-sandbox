@@ -30,4 +30,7 @@ Route::middleware([
     Route::get('/form', function () {
         return Inertia::render('Form');
     })->name('form');
+    Route::get('/tabs', function () {
+        return Inertia::render('Tabs');
+    })->name('tabs');
 });
