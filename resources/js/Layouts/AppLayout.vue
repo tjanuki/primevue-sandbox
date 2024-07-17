@@ -8,6 +8,7 @@ import DropdownLink from '@/Components/DropdownLink.vue';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
 import Toast from "primevue/toast";
 import Navigations from "@/Layouts/partials/Navigations.vue";
+import NotificationHandler from "@/Layouts/partials/NotificationHandler.vue";
 
 defineProps({
     title: String,
@@ -33,7 +34,7 @@ const logout = () => {
         <Head :title="title" />
 
         <Banner />
-        <Toast/>
+        <NotificationHandler/>
 
         <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
             <nav class="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">

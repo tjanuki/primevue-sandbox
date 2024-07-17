@@ -19,7 +19,10 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::get('/dashboard', function () {
-        return Inertia::render('Dashboard');
+        return Inertia::render('Dashboard')->with('notification', [
+            'type' => 'success',
+            'message' => 'Welcome to the dashboard!'
+        ]);
     })->name('dashboard');
     Route::get('/toast', function () {
         return Inertia::render('Toast');
