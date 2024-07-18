@@ -19,5 +19,8 @@ import NavLink from '@/Components/NavLink.vue';
         <NavLink :href="route('tabs')" :active="route().current('tabs')">
             Tabs
         </NavLink>
+        <NavLink :href="route('datatables')" :active="route().current('datatables')">
+            DataTable
+        </NavLink>
     </div>
 </template>

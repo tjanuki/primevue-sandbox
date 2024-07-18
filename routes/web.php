@@ -36,4 +36,7 @@ Route::middleware([
     Route::get('/tabs', function () {
         return Inertia::render('Tabs');
     })->name('tabs');
+    Route::get('/datatables', function () {
+        return Inertia::render('DataTables');
+    })->name('datatables');
 });
