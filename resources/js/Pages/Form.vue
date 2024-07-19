@@ -6,6 +6,9 @@ import InputGroupAddon from 'primevue/inputgroupaddon';
 import {useForm} from "@inertiajs/vue3";
 import InputText from 'primevue/inputtext';
 import Checkbox from "primevue/checkbox";
+import MultiSelect from 'primevue/multiselect';
+import FloatLabel from 'primevue/floatlabel';
+import {ref} from "vue";
 
 const form = useForm({
     date: '',
@@ -15,17 +18,60 @@ const form = useForm({
 const submit = () => {
     console.log('finish')
 }
+const selectedCities = ref();
+const groupedCities = ref([
+    {
+        label: 'Germany',
+        code: 'DE',
+        items: [
+            { label: 'Berlin', value: 'Berlin' },
+            { label: 'Frankfurt', value: 'Frankfurt' },
+            { label: 'Hamburg', value: 'Hamburg' },
+            { label: 'Munich', value: 'Munich' }
+        ]
+    },
+    {
+        label: 'USA',
+        code: 'US',
+        items: [
+            { label: 'Chicago', value: 'Chicago' },
+            { label: 'Los Angeles', value: 'Los Angeles' },
+            { label: 'New York', value: 'New York' },
+            { label: 'San Francisco', value: 'San Francisco' }
+        ]
+    },
+    {
+        label: 'Japan',
+        code: 'JP',
+        items: [
+            { label: 'Kyoto', value: 'Kyoto' },
+            { label: 'Osaka', value: 'Osaka' },
+            { label: 'Tokyo', value: 'Tokyo' },
+            { label: 'Yokohama', value: 'Yokohama' }
+        ]
+    }
+]);
+
+const selectedCitiesFloated = ref();
+const cities = ref([
+    { name: 'New York', code: 'NY' },
+    { name: 'Rome', code: 'RM' },
+    { name: 'London', code: 'LDN' },
+    { name: 'Istanbul', code: 'IST' },
+    { name: 'Paris', code: 'PRS' }
+]);
+
 </script>
 
 <template>
     <DashboardLayout title="Form" @submit.prevent="submit">
-        <form>
-            <div class="my-4">
+        <form class="flex flex-col gap-10">
+            <div>
                 <label class="text-gray-500">Date picker</label>
                 <DatePicker v-model="form.date" dateFormat="yy/mm/dd" showIcon fluid/>
             </div>
 
-            <div class="my-2">
+            <div>
                 <label class="text-gray-500">Input with prefix</label>
                 <InputGroup>
                     <InputGroupAddon>https://</InputGroupAddon>
@@ -33,7 +79,7 @@ const submit = () => {
                 </InputGroup>
             </div>
 
-            <div class="my-6">
+            <div>
                 <div class="card flex flex-wrap justify-center gap-4">
                     <div class="flex items-center">
                         <Checkbox v-model="form.pizza" inputId="ingredient1" name="pizza" value="Cheese"
@@ -56,6 +102,55 @@ const submit = () => {
                         <label for="ingredient4" class="ml-2"> Onion </label>
                     </div>
                 </div>
+            </div>
+
+            <div>
+                <MultiSelect
+                    v-model="selectedCities"
+                    :options="groupedCities"
+                    optionLabel="label"
+                    filter
+                    optionGroupLabel="label"
+                    optionGroupChildren="items"
+                    display="chip"
+                    placeholder="Select Cities"
+                    :max-selected-labels="3"
+                    class="w-full md:w-80">
+                    <template #optiongroup="slotProps">
+                        <div class="flex items-center">
+                            <img :alt="slotProps.option.label" src="https://primefaces.org/cdn/primevue/images/flag/flag_placeholder.png" :class="`flag flag-${slotProps.option.code.toLowerCase()} mr-2`" style="width: 18px" />
+                            <div>{{ slotProps.option.label }}</div>
+                        </div>
+                    </template>
+                </MultiSelect>
+            </div>
+
+            <div>
+                <FloatLabel class="w-full md:w-80">
+                    <MultiSelect id="ms-cities" v-model="selectedCitiesFloated" :options="cities" optionLabel="name" filter :maxSelectedLabels="3" class="w-full" />
+                    <label for="ms-cities">MultiSelect</label>
+                </FloatLabel>
+            </div>
+
+            <div>
+                <MultiSelect
+                    v-model="selectedCities"
+                    :options="groupedCities"
+                    :maxSelectedLabels="3"
+                    optionLabel="label"
+                    filter
+                    optionGroupLabel="label"
+                    optionGroupChildren="items"
+                    placeholder="Select Cities"
+                    :max-selected-labels="0"
+                    class="w-full md:w-80">
+                    <template #optiongroup="slotProps">
+                        <div class="flex items-center">
+                            <img :alt="slotProps.option.label" src="https://primefaces.org/cdn/primevue/images/flag/flag_placeholder.png" :class="`flag flag-${slotProps.option.code.toLowerCase()} mr-2`" style="width: 18px" />
+                            <div>{{ slotProps.option.label }}</div>
+                        </div>
+                    </template>
+                </MultiSelect>
             </div>
         </form>
 
