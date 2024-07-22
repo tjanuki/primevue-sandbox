@@ -9,6 +9,7 @@ import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
 import Toast from "primevue/toast";
 import Navigations from "@/Layouts/partials/Navigations.vue";
 import NotificationHandler from "@/Layouts/partials/NotificationHandler.vue";
+import DarkModeToggle from "@/Layouts/partials/DarkModeToggle.vue";
 
 defineProps({
     title: String,
@@ -54,6 +55,7 @@ const logout = () => {
                         </div>
 
                         <div class="hidden sm:flex sm:items-center sm:ms-6">
+                            <DarkModeToggle/>
                             <div class="ms-3 relative">
                                 <!-- Teams Dropdown -->
                                 <Dropdown v-if="$page.props.jetstream.hasTeamFeatures" align="right" width="60">
