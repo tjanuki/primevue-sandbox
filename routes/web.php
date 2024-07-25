@@ -24,19 +24,28 @@ Route::middleware([
             'message' => 'Welcome to the dashboard!'
         ]);
     })->name('dashboard');
+
     Route::get('/toast', function () {
         return Inertia::render('Toast');
     })->name('toast');
+
     Route::get('/modal', function () {
         return Inertia::render('Modal');
     })->name('modal');
+
     Route::get('/form', function () {
         return Inertia::render('Form');
     })->name('form');
+
     Route::get('/tabs', function () {
         return Inertia::render('Tabs');
     })->name('tabs');
+
     Route::get('/datatables', function () {
         return Inertia::render('DataTables');
     })->name('datatables');
+
+    Route::get('/scroll-panels', function () {
+        return Inertia::render('ScrollPanels');
+    })->name('scroll-panels');
 });

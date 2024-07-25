@@ -22,5 +22,8 @@ import NavLink from '@/Components/NavLink.vue';
         <NavLink :href="route('datatables')" :active="route().current('datatables')">
             DataTable
         </NavLink>
+        <NavLink :href="route('scroll-panels')" :active="route().current('scroll-panels')">
+            Scroll Panels
+        </NavLink>
     </div>
 </template>
