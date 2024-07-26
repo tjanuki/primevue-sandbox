@@ -9,6 +9,7 @@ import Checkbox from "primevue/checkbox";
 import MultiSelect from 'primevue/multiselect';
 import FloatLabel from 'primevue/floatlabel';
 import {ref} from "vue";
+import CopyToClipBoard from "@/Pages/Forms/CopyToClipBoard.vue";
 
 const form = useForm({
     date: '',
@@ -151,6 +152,10 @@ const cities = ref([
                         </div>
                     </template>
                 </MultiSelect>
+            </div>
+
+            <div>
+                <CopyToClipBoard/>
             </div>
         </form>
 

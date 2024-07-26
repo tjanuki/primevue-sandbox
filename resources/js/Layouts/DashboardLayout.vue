@@ -1,6 +1,7 @@
 <script setup>
 import AppLayout from '@/Layouts/AppLayout.vue';
 import {ref} from "vue";
+import Panel from "primevue/panel";
 
 defineProps({
     title: String
