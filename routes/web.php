@@ -48,4 +48,8 @@ Route::middleware([
     Route::get('/scroll-panels', function () {
         return Inertia::render('ScrollPanels');
     })->name('scroll-panels');
+
+    Route::get('/menus', function () {
+        return Inertia::render('Menus');
+    })->name('menus');
 });

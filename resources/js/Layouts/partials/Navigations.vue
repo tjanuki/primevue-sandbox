@@ -25,5 +25,8 @@ import NavLink from '@/Components/NavLink.vue';
         <NavLink :href="route('scroll-panels')" :active="route().current('scroll-panels')">
             Scroll Panels
         </NavLink>
+        <NavLink :href="route('menus')" :active="route().current('menus')">
+            Menus
+        </NavLink>
     </div>
 </template>
