@@ -6,7 +6,6 @@ import {ref} from 'vue';
 
 const items = ref([
     {
-        label: 'Furniture',
         icon: 'pi pi-box',
         items: [
             [
@@ -40,7 +39,6 @@ const items = ref([
         ]
     },
     {
-        label: 'Electronics',
         icon: 'pi pi-mobile',
         items: [
             [
@@ -70,7 +68,7 @@ const items = ref([
         ]
     },
     {
-        label: 'Sports',
+        label: '',
         icon: 'pi pi-clock',
         items: [
             [
