@@ -37,6 +37,10 @@ Route::middleware([
         return Inertia::render('Form');
     })->name('form');
 
+    Route::get('/upload', function () {
+        return Inertia::render('Upload');
+    })->name('upload');
+
     Route::get('/tabs', function () {
         return Inertia::render('Tabs');
     })->name('tabs');

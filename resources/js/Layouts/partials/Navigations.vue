@@ -16,6 +16,9 @@ import NavLink from '@/Components/NavLink.vue';
         <NavLink :href="route('form')" :active="route().current('form')">
             Form
         </NavLink>
+        <NavLink :href="route('upload')" :active="route().current('upload')">
+            Upload
+        </NavLink>
         <NavLink :href="route('tabs')" :active="route().current('tabs')">
             Tabs
         </NavLink>
