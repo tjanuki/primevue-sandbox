@@ -56,4 +56,8 @@ Route::middleware([
     Route::get('/menus', function () {
         return Inertia::render('Menus');
     })->name('menus');
+
+    Route::get('/org-charts', function () {
+        return Inertia::render('OrgCharts');
+    })->name('org-charts');
 });

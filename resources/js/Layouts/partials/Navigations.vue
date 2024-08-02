@@ -31,5 +31,8 @@ import NavLink from '@/Components/NavLink.vue';
         <NavLink :href="route('menus')" :active="route().current('menus')">
             Menus
         </NavLink>
+        <NavLink :href="route('org-charts')" :active="route().current('org-charts')">
+            OrgChart
+        </NavLink>
     </div>
 </template>
