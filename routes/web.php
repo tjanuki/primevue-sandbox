@@ -60,4 +60,8 @@ Route::middleware([
     Route::get('/org-charts', function () {
         return Inertia::render('OrgCharts');
     })->name('org-charts');
+
+    Route::get('/carousel', function () {
+        return Inertia::render('Carousel');
+    })->name('carousel');
 });
