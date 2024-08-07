@@ -49,6 +49,10 @@ Route::middleware([
         return Inertia::render('DataTables');
     })->name('datatables');
 
+    Route::get('/reorders', function () {
+        return Inertia::render('Reorders');
+    })->name('reorders');
+
     Route::get('/scroll-panels', function () {
         return Inertia::render('ScrollPanels');
     })->name('scroll-panels');
