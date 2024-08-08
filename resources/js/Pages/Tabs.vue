@@ -32,3 +32,13 @@ const tabs = ref([
     </DashboardLayout>
 </template>
 
+<style>
+.p-tab-active {
+    border-top: solid 2px rgb(226, 232, 240) !important;
+    border-left: solid 2px rgb(226, 232, 240) !important;
+    border-right: solid 2px rgb(226, 232, 240) !important;
+    border-bottom: solid 2px rgb(226, 232, 240) !important;
+    border-top-left-radius: 10px !important;
+    border-top-right-radius: 10px !important;
+}
+</style>

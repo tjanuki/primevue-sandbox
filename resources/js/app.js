@@ -10,6 +10,7 @@ import PrimeVue from 'primevue/config';
 import Aura from '@primevue/themes/aura';
 import ToastService from 'primevue/toastservice';
 import {definePreset} from "@primevue/themes";
+import Ripple from "primevue/ripple";
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
@@ -48,6 +49,7 @@ createInertiaApp({
                 },
             })
             .use(ToastService)
+            .directive("ripple", Ripple)
             .mount(el);
     },
     progress: {
