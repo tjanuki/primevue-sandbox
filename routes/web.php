@@ -41,6 +41,10 @@ Route::middleware([
         return Inertia::render('Upload');
     })->name('upload');
 
+    Route::get('/crop', function () {
+        return Inertia::render('Crop');
+    })->name('crop');
+
     Route::get('/tabs', function () {
         return Inertia::render('Tabs');
     })->name('tabs');
