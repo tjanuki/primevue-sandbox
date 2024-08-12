@@ -4,13 +4,14 @@ import DashboardLayout from "@/Layouts/DashboardLayout.vue";
 import { useForm } from "@inertiajs/vue3";
 import FileUpload from 'primevue/fileupload';
 import Button from "primevue/button";
+import Dialog from 'primevue/dialog';
 import { useToast } from "primevue/usetoast";
 import { Cropper } from 'vue-advanced-cropper'
 import 'vue-advanced-cropper/dist/style.css';
 
 const fileUploadRef = ref(null);
 const imageUrl = ref(null);
-const showCropper = ref(false);
+const showCropperDialog = ref(false);
 const cropperRef = ref(null);
 const croppedImageUrl = ref(null);
 
@@ -20,7 +21,7 @@ const onUpload = (event) => {
         const reader = new FileReader();
         reader.onload = (e) => {
             imageUrl.value = e.target?.result;
-            showCropper.value = true;
+            showCropperDialog.value = true;
         };
         reader.readAsDataURL(file);
     }
@@ -29,7 +30,7 @@ const onUpload = (event) => {
 const onClear = () => {
     imageUrl.value = null;
     croppedImageUrl.value = null;
-    showCropper.value = false;
+    showCropperDialog.value = false;
 };
 
 const form = useForm({
@@ -44,7 +45,7 @@ const submit = () => {
 const onRemove = () => {
     imageUrl.value = null;
     croppedImageUrl.value = null;
-    showCropper.value = false;
+    showCropperDialog.value = false;
     if (fileUploadRef.value) {
         fileUploadRef.value.clear();
     }
@@ -59,7 +60,7 @@ const onAdvancedUpload = () => {
 const cropImage = () => {
     const { canvas } = cropperRef.value.getResult();
     croppedImageUrl.value = canvas.toDataURL();
-    showCropper.value = false;
+    showCropperDialog.value = false;
     toast.add({severity: 'success', summary: 'Success', detail: 'Image cropped', life: 3000});
 };
 
@@ -97,7 +98,11 @@ const cropperOptions = {
                 </template>
             </FileUpload>
 
-            <div v-if="showCropper" class="w-full max-w-2xl">
+            <img v-if="croppedImageUrl" :src="croppedImageUrl" alt="Cropped image" class="max-w-full h-auto" />
+        </form>
+
+        <Dialog v-model:visible="showCropperDialog" modal header="Crop Image" :style="{ width: '90vw', maxWidth: '640px' }">
+            <div class="w-full">
                 <Cropper
                     ref="cropperRef"
                     :src="imageUrl"
@@ -106,13 +111,13 @@ const cropperOptions = {
                     :image-restriction="cropperOptions.imageRestriction"
                     class="h-96"
                 />
-                <div class="mt-4 flex justify-center">
-                    <Button label="Crop" @click="cropImage" class="mr-2" />
-                    <Button label="Cancel" @click="onClear" severity="secondary" />
-                </div>
             </div>
-
-            <img v-else-if="croppedImageUrl" :src="croppedImageUrl" alt="Cropped image" class="max-w-full h-auto" />
-        </form>
+            <template #footer>
+                <div class="flex justify-end gap-2">
+                    <Button label="Cancel" severity="secondary" @click="onClear" />
+                    <Button label="Crop" @click="cropImage" />
+                </div>
+            </template>
+        </Dialog>
     </DashboardLayout>
 </template>
