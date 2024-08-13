@@ -40,6 +40,9 @@ import NavLink from '@/Components/NavLink.vue';
         <NavLink :href="route('org-charts')" :active="route().current('org-charts')">
             OrgChart
         </NavLink>
+        <NavLink :href="route('diagrams')" :active="route().current('diagrams')">
+            Diagrams
+        </NavLink>
         <NavLink :href="route('carousel')" :active="route().current('carousel')">
             Carousel
         </NavLink>

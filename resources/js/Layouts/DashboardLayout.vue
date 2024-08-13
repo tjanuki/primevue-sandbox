@@ -19,7 +19,7 @@ defineProps({
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <Panel>
-                    <div class="w-100 h-[500px] flex justify-center items-center">
+                    <div class="w-100 h-full flex justify-center items-center overflow-scroll">
                         <slot></slot>
                     </div>
                 </Panel>

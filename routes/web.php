@@ -69,6 +69,10 @@ Route::middleware([
         return Inertia::render('OrgCharts');
     })->name('org-charts');
 
+    Route::get('/diagrams', function () {
+        return Inertia::render('Diagrams');
+    })->name('diagrams');
+
     Route::get('/carousel', function () {
         return Inertia::render('Carousel');
     })->name('carousel');
