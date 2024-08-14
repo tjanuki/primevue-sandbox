@@ -66,18 +66,16 @@ const drawConnections = () => {
         const toNode = nodes.find(node => node.id === connection.to);
 
         if (fromNode && toNode) {
-            const line = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-            const startX = fromNode.x + 75;
-            const startY = fromNode.y + 25;
-            const endX = toNode.x + 75;
-            const endY = toNode.y;
+            const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+            const startX = fromNode.x + 75; // Center of the node
+            const startY = fromNode.y + (fromNode.type === 'delay' ? 40 : 50); // Bottom of the node
+            const endX = toNode.x + 75; // Center of the node
+            const endY = toNode.y; // Top of the node
 
-            // Create a curved path
-            const midY = (startY + endY) / 2;
-            const path = `M ${startX} ${startY} C ${startX} ${midY}, ${endX} ${midY}, ${endX} ${endY}`;
-
-            line.setAttribute('d', path);
-            line.setAttribute('fill', 'none');
+            line.setAttribute('x1', `${startX}`);
+            line.setAttribute('y1', `${startY}`);
+            line.setAttribute('x2', `${endX}`);
+            line.setAttribute('y2', `${endY}`);
             line.setAttribute('stroke', 'black');
             line.setAttribute('stroke-width', '2');
             svg.appendChild(line);
