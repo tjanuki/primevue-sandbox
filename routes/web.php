@@ -73,6 +73,10 @@ Route::middleware([
         return Inertia::render('Diagrams');
     })->name('diagrams');
 
+    Route::get('/timelines', function () {
+        return Inertia::render('Timelines');
+    })->name('timelines');
+
     Route::get('/carousel', function () {
         return Inertia::render('Carousel');
     })->name('carousel');
