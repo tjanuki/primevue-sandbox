@@ -1,6 +1,7 @@
 <script setup>
-import { ref } from 'vue';
+import {ref} from 'vue';
 import OrganizationChart from 'primevue/organizationchart';
+import DashboardLayout from "@/Layouts/DashboardLayout.vue";
 
 const data = ref({
     key: '0',
@@ -72,16 +73,17 @@ const getNodeClass = (type) => {
 </script>
 
 <template>
-    <div class="card overflow-x-auto">
-        <OrganizationChart :value="data">
-            <template #default="slotProps">
-                <div :class="['shadow-md node-content', getNodeClass(slotProps.node.type)]">
-                    <div class="text-sm font-bold">{{ slotProps.node.label }}</div>
-                    <div class="text-xs">{{ slotProps.node.type }}</div>
-                </div>
-            </template>
-        </OrganizationChart>
-    </div>
+    <DashboardLayout title="Diagram">
+        <div class="card overflow-x-auto">
+            <OrganizationChart :value="data">
+                <template #default="slotProps">
+                    <div :class="['shadow-md node-content', getNodeClass(slotProps.node.type)]">
+                        <div class="text-sm font-bold">{{ slotProps.node.label }}</div>
+                    </div>
+                </template>
+            </OrganizationChart>
+        </div>
+    </DashboardLayout>
 </template>
 
 <style scoped>
