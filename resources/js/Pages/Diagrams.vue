@@ -305,9 +305,10 @@ const getNodeStyle = (type: Node['type']): string => {
         case 'connector':
             return `
                 background-color: #E5E7EB;
-                width: 12px;
-                height: 12px;
+                width: 10px;
+                height: 10px;
                 cursor: pointer;
+                padding: 5px;
             `;
         default:
             return 'background-color: #6B7280; color: white;';
