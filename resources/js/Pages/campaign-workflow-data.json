@@ -1,0 +1,246 @@
+{
+    "key": "0",
+    "type": "start",
+    "label": "Start Marketing Campaign",
+    "children": [
+        {
+            "key": "c1",
+            "type": "connector",
+            "children": [
+                {
+                    "key": "1",
+                    "type": "action",
+                    "label": "Create Email List",
+                    "children": [
+                        {
+                            "key": "c2",
+                            "type": "connector",
+                            "children": [
+                                {
+                                    "key": "2",
+                                    "type": "action",
+                                    "label": "Design Email Template",
+                                    "children": [
+                                        {
+                                            "key": "c3",
+                                            "type": "connector",
+                                            "children": [
+                                                {
+                                                    "key": "3",
+                                                    "type": "action",
+                                                    "label": "Send Welcome Email",
+                                                    "children": [
+                                                        {
+                                                            "key": "c4",
+                                                            "type": "connector",
+                                                            "children": [
+                                                                {
+                                                                    "key": "4",
+                                                                    "type": "condition",
+                                                                    "label": "Email Opened?",
+                                                                    "children": [
+                                                                        {
+                                                                            "key": "c5",
+                                                                            "type": "connector",
+                                                                            "children": [
+                                                                                {
+                                                                                    "key": "5",
+                                                                                    "type": "action",
+                                                                                    "label": "Send Follow-up Email",
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "key": "c6",
+                                                                                            "type": "connector",
+                                                                                            "children": [
+                                                                                                {
+                                                                                                    "key": "6",
+                                                                                                    "type": "condition",
+                                                                                                    "label": "Clicked Link?",
+                                                                                                    "children": [
+                                                                                                        {
+                                                                                                            "key": "c7",
+                                                                                                            "type": "connector",
+                                                                                                            "children": [
+                                                                                                                {
+                                                                                                                    "key": "7",
+                                                                                                                    "type": "action",
+                                                                                                                    "label": "Add to Interested List",
+                                                                                                                    "children": [
+                                                                                                                        {
+                                                                                                                            "key": "c8",
+                                                                                                                            "type": "connector",
+                                                                                                                            "children": [
+                                                                                                                                {
+                                                                                                                                    "key": "8",
+                                                                                                                                    "type": "action",
+                                                                                                                                    "label": "Schedule Call",
+                                                                                                                                    "children": [
+                                                                                                                                        {
+                                                                                                                                            "key": "c9",
+                                                                                                                                            "type": "connector",
+                                                                                                                                            "children": [
+                                                                                                                                                {
+                                                                                                                                                    "key": "9",
+                                                                                                                                                    "type": "end",
+                                                                                                                                                    "label": "End Campaign"
+                                                                                                                                                }
+                                                                                                                                            ]
+                                                                                                                                        }
+                                                                                                                                    ]
+                                                                                                                                }
+                                                                                                                            ]
+                                                                                                                        }
+                                                                                                                    ]
+                                                                                                                }
+                                                                                                            ]
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "key": "c10",
+                                                                                                            "type": "connector",
+                                                                                                            "children": [
+                                                                                                                {
+                                                                                                                    "key": "10",
+                                                                                                                    "type": "wait",
+                                                                                                                    "label": "Wait 5 Days",
+                                                                                                                    "children": [
+                                                                                                                        {
+                                                                                                                            "key": "c11",
+                                                                                                                            "type": "connector",
+                                                                                                                            "children": [
+                                                                                                                                {
+                                                                                                                                    "key": "11",
+                                                                                                                                    "type": "action",
+                                                                                                                                    "label": "Send Promotional Offer",
+                                                                                                                                    "children": [
+                                                                                                                                        {
+                                                                                                                                            "key": "c12",
+                                                                                                                                            "type": "connector",
+                                                                                                                                            "children": [
+                                                                                                                                                {
+                                                                                                                                                    "key": "12",
+                                                                                                                                                    "type": "end",
+                                                                                                                                                    "label": "End Campaign"
+                                                                                                                                                }
+                                                                                                                                            ]
+                                                                                                                                        }
+                                                                                                                                    ]
+                                                                                                                                }
+                                                                                                                            ]
+                                                                                                                        }
+                                                                                                                    ]
+                                                                                                                }
+                                                                                                            ]
+                                                                                                        }
+                                                                                                    ]
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "key": "c13",
+                                                                            "type": "connector",
+                                                                            "children": [
+                                                                                {
+                                                                                    "key": "13",
+                                                                                    "type": "wait",
+                                                                                    "label": "Wait 3 Days",
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "key": "c14",
+                                                                                            "type": "connector",
+                                                                                            "children": [
+                                                                                                {
+                                                                                                    "key": "14",
+                                                                                                    "type": "action",
+                                                                                                    "label": "Send Reminder Email",
+                                                                                                    "children": [
+                                                                                                        {
+                                                                                                            "key": "c15",
+                                                                                                            "type": "connector",
+                                                                                                            "children": [
+                                                                                                                {
+                                                                                                                    "key": "15",
+                                                                                                                    "type": "condition",
+                                                                                                                    "label": "Opened Reminder?",
+                                                                                                                    "children": [
+                                                                                                                        {
+                                                                                                                            "key": "c16",
+                                                                                                                            "type": "connector",
+                                                                                                                            "children": [
+                                                                                                                                {
+                                                                                                                                    "key": "16",
+                                                                                                                                    "type": "action",
+                                                                                                                                    "label": "Send Survey",
+                                                                                                                                    "children": [
+                                                                                                                                        {
+                                                                                                                                            "key": "c17",
+                                                                                                                                            "type": "connector",
+                                                                                                                                            "children": [
+                                                                                                                                                {
+                                                                                                                                                    "key": "17",
+                                                                                                                                                    "type": "end",
+                                                                                                                                                    "label": "End Campaign"
+                                                                                                                                                }
+                                                                                                                                            ]
+                                                                                                                                        }
+                                                                                                                                    ]
+                                                                                                                                }
+                                                                                                                            ]
+                                                                                                                        },
+                                                                                                                        {
+                                                                                                                            "key": "c18",
+                                                                                                                            "type": "connector",
+                                                                                                                            "children": [
+                                                                                                                                {
+                                                                                                                                    "key": "18",
+                                                                                                                                    "type": "action",
+                                                                                                                                    "label": "Move to Inactive List",
+                                                                                                                                    "children": [
+                                                                                                                                        {
+                                                                                                                                            "key": "c19",
+                                                                                                                                            "type": "connector",
+                                                                                                                                            "children": [
+                                                                                                                                                {
+                                                                                                                                                    "key": "19",
+                                                                                                                                                    "type": "end",
+                                                                                                                                                    "label": "End Campaign"
+                                                                                                                                                }
+                                                                                                                                            ]
+                                                                                                                                        }
+                                                                                                                                    ]
+                                                                                                                                }
+                                                                                                                            ]
+                                                                                                                        }
+                                                                                                                    ]
+                                                                                                                }
+                                                                                                            ]
+                                                                                                        }
+                                                                                                    ]
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
