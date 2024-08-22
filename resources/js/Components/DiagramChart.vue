@@ -26,8 +26,11 @@ const ptOptions = {
     connectorLines: {
         style: 'pointer-events: none;'
     },
+    connectorDown: {
+        style: 'height: 12px;'
+    },
     lineDown: {
-        style: 'background-color: #9CA3AF; width: 3px;'
+        style: 'width: 3px;'
     },
     lineLeft: {
         style: 'border-color: #9CA3AF; border-width: 0 0 3px 3px;'
@@ -49,12 +52,13 @@ const getNodeStyle = (type: Node['type']): string => {
             return `
                 background-color: #FBBF24;
                 color: black;
-                width: 100px;
-                height: 100px;
-                transform: rotate(45deg);
+                width: 60px;
+                height: 60px;
+                transform: rotate(45deg) translate(-7.07px, -7.07px);
                 display: flex;
                 align-items: center;
                 justify-content: center;
+                position: relative;
             `;
         case 'end':
             return 'background-color: #EF4444; color: white;';
@@ -77,7 +81,12 @@ const getNodeStyle = (type: Node['type']): string => {
         <template #default="slotProps">
             <div class="p-4 rounded" :style="getNodeStyle(slotProps.node.type)">
                 <div v-if="slotProps.node.type !== 'connector'" :style="slotProps.node.type === 'condition' ? 'transform: rotate(-45deg);' : ''">
-                    <div class="text-sm font-bold">{{ slotProps.node.label }}</div>
+                    <template v-if="slotProps.node.type === 'condition'">
+                        <span class="absolute -translate-x-1/2 -translate-y-1/2 whitespace-nowrap text-white bg-amber-600 p-1 rounded text-sm">{{ slotProps.node.label }}</span>
+                    </template>
+                    <template v-else>
+                        <div class="text-sm font-bold">{{ slotProps.node.label }}</div>
+                    </template>
                 </div>
             </div>
         </template>
