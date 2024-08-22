@@ -43,6 +43,9 @@ import NavLink from '@/Components/NavLink.vue';
         <NavLink :href="route('diagrams')" :active="route().current('diagrams')">
             Diagrams
         </NavLink>
+        <NavLink :href="route('diagram-panels')" :active="route().current('diagram-panels')">
+            Diagram Panels
+        </NavLink>
         <NavLink :href="route('timelines')" :active="route().current('timelines')">
             Timelines
         </NavLink>

@@ -73,6 +73,10 @@ Route::middleware([
         return Inertia::render('Diagrams');
     })->name('diagrams');
 
+    Route::get('/diagram-panels', function () {
+        return Inertia::render('DiagramPanels');
+    })->name('diagram-panels');
+
     Route::get('/timelines', function () {
         return Inertia::render('Timelines');
     })->name('timelines');
