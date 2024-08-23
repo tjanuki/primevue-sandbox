@@ -1,0 +1,140 @@
+[
+    {
+        "key": "0",
+        "type": "start",
+        "label": "マーケティングキャンペーン開始",
+        "indent": 0
+    },
+    {
+        "key": "1",
+        "type": "action",
+        "label": "メールリスト作成",
+        "indent": 1
+    },
+    {
+        "key": "2",
+        "type": "action",
+        "label": "メールテンプレートデザイン",
+        "indent": 1
+    },
+    {
+        "key": "3",
+        "type": "action",
+        "label": "ウェルカムメール送信",
+        "indent": 1
+    },
+    {
+        "key": "4",
+        "type": "condition",
+        "label": "メール開封済み？",
+        "indent": 1
+    },
+    {
+        "key": "5",
+        "type": "action",
+        "label": "フォローアップメール送信",
+        "indent": 2
+    },
+    {
+        "key": "6",
+        "type": "condition",
+        "label": "リンククリック済み？",
+        "indent": 2
+    },
+    {
+        "key": "7",
+        "type": "action",
+        "label": "興味ありリストに追加",
+        "indent": 3
+    },
+    {
+        "key": "8",
+        "type": "action",
+        "label": "通話予約",
+        "indent": 3
+    },
+    {
+        "key": "9",
+        "type": "end",
+        "label": "キャンペーン終了",
+        "indent": 3
+    },
+    {
+        "key": "10",
+        "type": "condition",
+        "label": "リンククリック済み？ - その他",
+        "indent": 2
+    },
+    {
+        "key": "11",
+        "type": "wait",
+        "label": "5日間待機",
+        "indent": 3
+    },
+    {
+        "key": "12",
+        "type": "action",
+        "label": "プロモーションオファー送信",
+        "indent": 3
+    },
+    {
+        "key": "13",
+        "type": "end",
+        "label": "キャンペーン終了",
+        "indent": 3
+    },
+    {
+        "key": "14",
+        "type": "condition",
+        "label": "メール開封済み？ - その他",
+        "indent": 1
+    },
+    {
+        "key": "15",
+        "type": "wait",
+        "label": "3日間待機",
+        "indent": 2
+    },
+    {
+        "key": "16",
+        "type": "action",
+        "label": "リマインダーメール送信",
+        "indent": 2
+    },
+    {
+        "key": "17",
+        "type": "condition",
+        "label": "リマインダー開封済み？",
+        "indent": 2
+    },
+    {
+        "key": "18",
+        "type": "action",
+        "label": "アンケート送信",
+        "indent": 3
+    },
+    {
+        "key": "19",
+        "type": "end",
+        "label": "キャンペーン終了",
+        "indent": 3
+    },
+    {
+        "key": "20",
+        "type": "condition",
+        "label": "リマインダー開封済み？ - その他",
+        "indent": 2
+    },
+    {
+        "key": "21",
+        "type": "action",
+        "label": "非アクティブリストに移動",
+        "indent": 3
+    },
+    {
+        "key": "22",
+        "type": "end",
+        "label": "キャンペーン終了",
+        "indent": 3
+    }
+]
