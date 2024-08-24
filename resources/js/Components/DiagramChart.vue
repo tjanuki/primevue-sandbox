@@ -18,7 +18,7 @@ const ptOptions = {
         style: 'overflow-x: auto; padding: 1rem;'
     },
     node: {
-        style: 'border: none; background-color: transparent; padding: 0;'
+        style: 'border: none; background-color: transparent; padding: 0; min-width: 200px'
     },
     nodeContent: {
         style: 'padding: 0.5rem; min-width: 100px; text-align: center; border: none; border-radius: 0.5rem;'

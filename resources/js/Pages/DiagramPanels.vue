@@ -1,31 +1,10 @@
-<template>
-    <div class="card">
-        <div v-for="node in nodes" :key="node.key" class="node-wrapper" :style="{ marginLeft: `${node.indent * 1.5}rem` }">
-            <div v-if="node.type === 'wait'" class="mb-2">
-                <Message :severity="'info'">{{ node.label }}</Message>
-            </div>
-            <Panel v-else class="mb-2 custom-panel" :class="getPanelClass(node)">
-                <template #icons>
-                    <i :class="getIconClass(node.type)" class="mr-2"></i>
-                </template>
-                <template #header>
-                    <span>{{ node.label }}</span>
-                </template>
-                <template #actions v-if="node.type !== 'start' && node.type !== 'end'">
-                    <Button icon="pi pi-pencil" class="p-button-text p-button-sm" @click="editNode(node.key)" />
-                    <Button icon="pi pi-trash" class="p-button-text p-button-sm p-button-danger" @click="removeNode(node.key)" />
-                </template>
-            </Panel>
-        </div>
-    </div>
-</template>
-
 <script setup>
 import { ref, onMounted } from 'vue';
 import Panel from 'primevue/panel';
 import Message from 'primevue/message';
 import Button from 'primevue/button';
 import jsonData from "@/Pages/diagram-panel-data.json";
+import DashboardLayout from "@/Layouts/DashboardLayout.vue";
 
 const nodes = ref([]);
 
@@ -66,6 +45,30 @@ const removeNode = (key) => {
     // 削除機能を実装する
 };
 </script>
+
+<template>
+    <DashboardLayout title="Complex Marketing Campaign Workflow">
+        <div class="card">
+            <div v-for="node in nodes" :key="node.key" class="node-wrapper" :style="{ marginLeft: `${node.indent * 1.5}rem` }">
+                <div v-if="node.type === 'wait'" class="mb-2">
+                    <Message :severity="'info'">{{ node.label }}</Message>
+                </div>
+                <Panel v-else class="mb-2 custom-panel" :class="getPanelClass(node)">
+                    <template #icons>
+                        <i :class="getIconClass(node.type)" class="mr-2"></i>
+                    </template>
+                    <template #header>
+                        <span>{{ node.label }}</span>
+                    </template>
+                    <template #actions v-if="node.type !== 'start' && node.type !== 'end'">
+                        <Button icon="pi pi-pencil" class="p-button-text p-button-sm" @click="editNode(node.key)" />
+                        <Button icon="pi pi-trash" class="p-button-text p-button-sm p-button-danger" @click="removeNode(node.key)" />
+                    </template>
+                </Panel>
+            </div>
+        </div>
+    </DashboardLayout>
+</template>
 
 <style scoped>
 .card {
