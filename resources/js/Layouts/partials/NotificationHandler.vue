@@ -27,6 +27,6 @@ watch(() => page.props.notification, (newNotification) => {
 });
 </script>
 <template>
-    <Toast position="top-right" />
+    <Toast :breakpoints="{'640px': {width: '90%', right: '5%', left: '5%'}}" />
 </template>
 
