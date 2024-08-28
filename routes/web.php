@@ -84,4 +84,8 @@ Route::middleware([
     Route::get('/carousel', function () {
         return Inertia::render('Carousel');
     })->name('carousel');
+
+    Route::get('/menu-buttons', function () {
+        return Inertia::render('MenuButtons');
+    })->name('menu-buttons');
 });
