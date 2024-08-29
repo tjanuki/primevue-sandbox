@@ -88,4 +88,8 @@ Route::middleware([
     Route::get('/menu-buttons', function () {
         return Inertia::render('MenuButtons');
     })->name('menu-buttons');
+
+    Route::get('/steppers', function () {
+        return Inertia::render('Steppers');
+    })->name('steppers');
 });

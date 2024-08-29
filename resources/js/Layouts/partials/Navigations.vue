@@ -97,6 +97,10 @@ const items = ref([
                             command: () => { window.location.href = route('diagram-panels'); }
                         },
                         {
+                            label: 'Steppers',
+                            command: () => { window.location.href = route('steppers'); }
+                        },
+                        {
                             label: 'Menu Buttons',
                             command: () => { window.location.href = route('menu-buttons'); }
                         }
