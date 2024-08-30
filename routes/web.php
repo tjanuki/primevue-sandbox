@@ -53,6 +53,10 @@ Route::middleware([
         return Inertia::render('DataTables');
     })->name('datatables');
 
+    Route::get('/data-views', function () {
+        return Inertia::render('DataViews');
+    })->name('data-views');
+
     Route::get('/reorders', function () {
         return Inertia::render('Reorders');
     })->name('reorders');
