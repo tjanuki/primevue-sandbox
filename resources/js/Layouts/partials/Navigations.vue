@@ -107,6 +107,10 @@ const items = ref([
                         {
                             label: 'Menu Buttons',
                             command: () => { window.location.href = route('menu-buttons'); }
+                        },
+                        {
+                            label: 'Checkbox groups',
+                            command: () => { window.location.href = route('checkbox-groups'); }
                         }
                     ]
                 }

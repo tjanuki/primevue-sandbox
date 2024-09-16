@@ -96,4 +96,8 @@ Route::middleware([
     Route::get('/steppers', function () {
         return Inertia::render('Steppers');
     })->name('steppers');
+
+    Route::get('/checkbox-groups', function () {
+        return Inertia::render('CheckboxGroups');
+    })->name('checkbox-groups');
 });
