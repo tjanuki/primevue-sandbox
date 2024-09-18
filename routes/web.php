@@ -53,6 +53,10 @@ Route::middleware([
         return Inertia::render('DataTables');
     })->name('datatables');
 
+    Route::get('/tree-tables', function () {
+        return Inertia::render('TreeTables');
+    })->name('tree-tables');
+
     Route::get('/data-views', function () {
         return Inertia::render('DataViews');
     })->name('data-views');

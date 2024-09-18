@@ -66,6 +66,10 @@ const items = ref([
                             command: () => { window.location.href = route('datatables'); }
                         },
                         {
+                            label: 'TreeTable',
+                            command: () => { window.location.href = route('tree-tables'); }
+                        },
+                        {
                             label: 'DataViews',
                             command: () => { window.location.href = route('data-views'); }
                         },
