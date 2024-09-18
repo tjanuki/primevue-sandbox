@@ -1,5 +1,5 @@
 <script setup>
-import {ref, onMounted} from 'vue';
+import { ref, onMounted } from 'vue';
 import DashboardLayout from "@/Layouts/DashboardLayout.vue";
 import TreeTable from 'primevue/treetable';
 import Column from 'primevue/column';
@@ -9,33 +9,33 @@ import Button from 'primevue/button';
 const nodes = ref([
     {
         key: '0',
-        data: {name: 'Fruits', size: '3 items', type: 'Category'},
+        data: { name: 'Fruits', size: '3 items', type: 'Category' },
         children: [
             {
                 key: '0-0',
-                data: {name: 'Apple', size: '5', type: 'Fruit'}
+                data: { name: 'Apple', size: '5', type: 'Fruit' }
             },
             {
                 key: '0-1',
-                data: {name: 'Banana', size: '10', type: 'Fruit'}
+                data: { name: 'Banana', size: '10', type: 'Fruit' }
             },
             {
                 key: '0-2',
-                data: {name: 'Orange', size: '5', type: 'Fruit'}
+                data: { name: 'Orange', size: '5', type: 'Fruit' }
             }
         ]
     },
     {
         key: '1',
-        data: {name: 'Vegetables', size: '2 items', type: 'Category'},
+        data: { name: 'Vegetables', size: '2 items', type: 'Category' },
         children: [
             {
                 key: '1-0',
-                data: {name: 'Carrot', size: '20', type: 'Vegetable'}
+                data: { name: 'Carrot', size: '20', type: 'Vegetable' }
             },
             {
                 key: '1-1',
-                data: {name: 'Tomato', size: '10', type: 'Vegetable'}
+                data: { name: 'Tomato', size: '10', type: 'Vegetable' }
             }
         ]
     }
@@ -43,7 +43,26 @@ const nodes = ref([
 
 const expandedKeys = ref({});
 const filters = ref({});
-const selectedKeys = ref({});
+
+// Initialize selectedKeys with default checked records
+const selectedKeys = ref({
+    '0': {
+        checked: false,
+        partialChecked: true
+    },
+    '1': {
+        checked: false,
+        partialChecked: true
+    },
+    '0-1': {
+        checked: true,
+        partialChecked: false
+    },
+    '1-0': {
+        checked: true,
+        partialChecked: false
+    }
+});
 
 const toggleAll = () => {
     const allKeys = getAllKeys(nodes.value);
@@ -70,6 +89,11 @@ const getAllKeys = (nodes) => {
     });
     return keys;
 };
+
+// New method to log checked nodes
+const logCheckedNodes = () => {
+    console.log('Checked nodes:', JSON.stringify(selectedKeys.value, null, 2));
+};
 </script>
 
 <template>
@@ -85,17 +109,37 @@ const getAllKeys = (nodes) => {
                 tableStyle="min-width: 50rem"
             >
                 <template #header>
-                    <div class="flex justify-end items-center">
-                        <Button @click="toggleAll" label="Show All"/>
+                    <div class="flex justify-between items-center">
+                        <Button @click="toggleAll" label="Show All" />
+                        <Button @click="logCheckedNodes" label="Log Checked Nodes" class="ml-2" />
+                        <span class="p-input-icon-left">
+                            <i class="pi pi-search" />
+                            <InputText v-model="filters['global']" placeholder="Global Search" />
+                        </span>
                     </div>
                 </template>
-                <Column field="name" header="Name" expander>
+                <Column field="name" header="Name" expander style="width: 34%">
                     <template #body="{ node }">
                         {{ node.data.name }}
                     </template>
                     <template #filter>
-                        <InputText v-model="filters['name']" type="text" class="p-column-filter"
-                                   placeholder="Filter by name"/>
+                        <InputText v-model="filters['name']" type="text" class="p-column-filter" placeholder="Filter by name" />
+                    </template>
+                </Column>
+                <Column field="size" header="Size" style="width: 33%">
+                    <template #body="{ node }">
+                        {{ node.data.size }}
+                    </template>
+                    <template #filter>
+                        <InputText v-model="filters['size']" type="text" class="p-column-filter" placeholder="Filter by size" />
+                    </template>
+                </Column>
+                <Column field="type" header="Type" style="width: 33%">
+                    <template #body="{ node }">
+                        {{ node.data.type }}
+                    </template>
+                    <template #filter>
+                        <InputText v-model="filters['type']" type="text" class="p-column-filter" placeholder="Filter by type" />
                     </template>
                 </Column>
             </TreeTable>
