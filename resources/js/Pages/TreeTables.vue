@@ -90,9 +90,55 @@ const getAllKeys = (nodes) => {
     return keys;
 };
 
-// New method to log checked nodes
 const logCheckedNodes = () => {
     console.log('Checked nodes:', JSON.stringify(selectedKeys.value, null, 2));
+};
+
+// New method to toggle checkbox when name is clicked
+const toggleCheckbox = (node) => {
+    const key = node.key;
+    if (selectedKeys.value[key]) {
+        if (selectedKeys.value[key].checked) {
+            // If checked, uncheck it
+            delete selectedKeys.value[key];
+        } else {
+            // If partially checked, check it fully
+            selectedKeys.value[key] = { checked: true, partialChecked: false };
+        }
+    } else {
+        // If unchecked, check it
+        selectedKeys.value[key] = { checked: true, partialChecked: false };
+    }
+
+    // Force reactivity update
+    selectedKeys.value = { ...selectedKeys.value };
+
+    // Update parent nodes (simplified, might need more complex logic for deep hierarchies)
+    updateParentNodes(nodes.value, key);
+};
+
+// Helper method to update parent nodes
+const updateParentNodes = (nodes, childKey) => {
+    for (let node of nodes) {
+        if (node.children && node.children.some(child => child.key === childKey)) {
+            const allChecked = node.children.every(child => selectedKeys.value[child.key]?.checked);
+            const someChecked = node.children.some(child => selectedKeys.value[child.key]?.checked || selectedKeys.value[child.key]?.partialChecked);
+
+            if (allChecked) {
+                selectedKeys.value[node.key] = { checked: true, partialChecked: false };
+            } else if (someChecked) {
+                selectedKeys.value[node.key] = { checked: false, partialChecked: true };
+            } else {
+                delete selectedKeys.value[node.key];
+            }
+
+            // Continue up the tree
+            updateParentNodes(nodes, node.key);
+            break;
+        } else if (node.children) {
+            updateParentNodes(node.children, childKey);
+        }
+    }
 };
 </script>
 
@@ -120,7 +166,9 @@ const logCheckedNodes = () => {
                 </template>
                 <Column field="name" header="Name" expander style="width: 34%">
                     <template #body="{ node }">
-                        {{ node.data.name }}
+                        <span @click.stop="toggleCheckbox(node)" class="cursor-pointer">
+                            {{ node.data.name }}
+                        </span>
                     </template>
                     <template #filter>
                         <InputText v-model="filters['name']" type="text" class="p-column-filter" placeholder="Filter by name" />
@@ -150,5 +198,8 @@ const logCheckedNodes = () => {
 <style lang="scss" scoped>
 .p-column-filter {
     width: 100%;
+}
+.cursor-pointer {
+    cursor: pointer;
 }
 </style>
