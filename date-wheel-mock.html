@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>イベント設定 — 日程ホイール モック（案）</title>
+<style>
+  :root{
+    --p-primary:#10b981; --p-primary-600:#059669; --p-primary-50:#ecfdf5;
+    --p-surface-0:#ffffff; --p-surface-50:#f8fafc; --p-surface-100:#f1f5f9;
+    --p-surface-200:#e2e8f0; --p-surface-300:#cbd5e1;
+    --p-text:#1e293b; --p-text-muted:#64748b; --p-border:#e2e8f0; --p-radius:10px;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Hiragino Kaku Gothic ProN","Hiragino Sans",Meiryo,sans-serif;background:var(--p-surface-100);color:var(--p-text);-webkit-font-smoothing:antialiased;padding:32px 16px;}
+  .page{max-width:560px;margin:0 auto;}
+  .proposal-banner{display:flex;align-items:center;gap:8px;background:var(--p-primary-50);border:1px solid #a7f3d0;color:var(--p-primary-600);border-radius:var(--p-radius);padding:10px 14px;margin-bottom:16px;font-size:13px;font-weight:600;}
+  .card{background:var(--p-surface-0);border:1px solid var(--p-border);border-radius:16px;box-shadow:0 1px 2px rgba(0,0,0,.04),0 8px 24px rgba(15,23,42,.06);overflow:hidden;}
+  .card-header{padding:20px 24px;border-bottom:1px solid var(--p-border);}
+  .card-title{margin:0;font-size:18px;font-weight:700;letter-spacing:.01em;}
+  .card-subtitle{margin:4px 0 0;font-size:13px;color:var(--p-text-muted);}
+  .card-body{padding:24px;}
+  .field{margin-bottom:22px;}
+  .field:last-child{margin-bottom:0;}
+  .field-label{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--p-text);margin-bottom:8px;}
+  .badge-an{display:inline-flex;align-items:center;background:var(--p-primary);color:#fff;font-size:11px;font-weight:700;line-height:1;padding:3px 7px;border-radius:999px;letter-spacing:.02em;}
+  .p-input{width:100%;padding:10px 12px;font-size:14px;color:var(--p-text);background:var(--p-surface-0);border:1px solid var(--p-surface-300);border-radius:8px;outline:none;transition:border-color .15s,box-shadow .15s;}
+  .p-input:focus{border-color:var(--p-primary);box-shadow:0 0 0 3px rgba(16,185,129,.2);}
+  .wheel-range{display:flex;align-items:center;gap:12px;}
+  .wheel-group{flex:1;}
+  .wheel-caption{font-size:12px;color:var(--p-text-muted);margin-bottom:6px;font-weight:600;}
+  .wheel{position:relative;display:flex;border:1px solid var(--p-surface-200);border-radius:12px;background:var(--p-surface-50);height:132px;overflow:hidden;}
+  .wheel-col{flex:1;position:relative;text-align:center;}
+  .wheel-col + .wheel-col{border-left:1px solid var(--p-surface-200);}
+  .wheel-list{display:flex;flex-direction:column;align-items:center;padding-top:22px;line-height:22px;font-size:14px;color:var(--p-text-muted);}
+  .wheel-list .cur{color:var(--p-text);font-weight:700;font-size:16px;background:rgba(16,185,129,.1);border-radius:6px;padding:0 10px;}
+  .wheel-list .dim{opacity:.45;}
+  .wheel-list .dim2{opacity:.2;}
+  .wheel-overlay{pointer-events:none;position:absolute;inset:0;background:linear-gradient(180deg,var(--p-surface-50) 0%,rgba(248,250,252,0) 30%,rgba(248,250,252,0) 70%,var(--p-surface-50) 100%);}
+  .wheel-unit{font-size:11px;color:var(--p-text-muted);margin-top:4px;text-align:center;}
+  .range-sep{color:var(--p-text-muted);font-size:18px;padding-top:24px;}
+  .footer{display:flex;justify-content:flex-end;gap:10px;padding:18px 24px;border-top:1px solid var(--p-border);background:var(--p-surface-50);}
+  .btn{font-size:14px;font-weight:600;padding:9px 18px;border-radius:8px;cursor:pointer;border:1px solid transparent;}
+  .btn-text{background:transparent;color:var(--p-text-muted);}
+  .btn-primary{background:var(--p-primary);color:#fff;}
+  .btn-primary:hover{background:var(--p-primary-600);}
+</style>
+</head>
+<body>
+  <div class="page">
+    <div class="proposal-banner">
+      <span class="badge-an">案</span>
+      <span>この画面は提案（案）です。確定した仕様ではありません。</span>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <h1 class="card-title">イベント設定</h1>
+        <p class="card-subtitle">開催するイベントの基本情報を入力してください。</p>
+      </div>
+      <div class="card-body">
+        <div class="field">
+          <label class="field-label">イベント名</label>
+          <input class="p-input" type="text" value="サマーフェスティバル 2026">
+        </div>
+        <div class="field">
+          <label class="field-label">開催日程 <span class="badge-an">案</span></label>
+          <div class="wheel-range">
+            <div class="wheel-group">
+              <div class="wheel-caption">開始</div>
+              <div class="wheel">
+                <div class="wheel-col"><div class="wheel-list"><span class="dim2">2024</span><span class="dim">2025</span><span class="cur">2026</span><span class="dim">2027</span></div></div>
+                <div class="wheel-col"><div class="wheel-list"><span class="dim2">6</span><span class="dim">7</span><span class="cur">8</span><span class="dim">9</span></div></div>
+                <div class="wheel-col"><div class="wheel-list"><span class="dim2">13</span><span class="dim">14</span><span class="cur">15</span><span class="dim">16</span></div></div>
+                <div class="wheel-overlay"></div>
+              </div>
+              <div class="wheel-unit">年 ／ 月 ／ 日</div>
+            </div>
+            <div class="range-sep">〜</div>
+            <div class="wheel-group">
+              <div class="wheel-caption">終了</div>
+              <div class="wheel">
+                <div class="wheel-col"><div class="wheel-list"><span class="dim2">2024</span><span class="dim">2025</span><span class="cur">2026</span><span class="dim">2027</span></div></div>
+                <div class="wheel-col"><div class="wheel-list"><span class="dim2">6</span><span class="dim">7</span><span class="cur">8</span><span class="dim">9</span></div></div>
+                <div class="wheel-col"><div class="wheel-list"><span class="dim2">15</span><span class="dim">16</span><span class="cur">17</span><span class="dim">18</span></div></div>
+                <div class="wheel-overlay"></div>
+              </div>
+              <div class="wheel-unit">年 ／ 月 ／ 日</div>
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label class="field-label">会場</label>
+          <input class="p-input" type="text" value="みなとみらい 特設会場">
+        </div>
+        <div class="field">
+          <label class="field-label">定員</label>
+          <input class="p-input" type="text" value="500 名">
+        </div>
+      </div>
+      <div class="footer">
+        <button class="btn btn-text">キャンセル</button>
+        <button class="btn btn-primary">保存</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
